@@ -13,15 +13,17 @@ const maps = {
 
 const Map = () => {
   const [map, setMap] = useState(null);
+  // eslint-disable-next-line
   const [start, setStart] = useState([38.9072, -77.0369])
+  // eslint-disable-next-line
   const [end, setEnd] = useState([37.7749, -122.4194])
-
+    console.log(map);
   return (
     <>
       <MapContainer
         center={[37.0902, -95.7129]}
         zoom={3}
-        zoomControl={false}
+        zoomControl={false} 
         style={{ height: "100vh", width: "100%", padding: 0 }}
         whenCreated={map => setMap(map)}
       >
