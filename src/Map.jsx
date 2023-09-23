@@ -1,49 +1,28 @@
 import React, { useState } from "react";
 import {
-  TileLayer,
   MapContainer,
-  LayersControl
+  Marker,
+  TileLayer
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import RoutingControl from './RoutingControl'
-
-const maps = {
-  base: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-};
-
 const Map = () => {
   const [map, setMap] = useState(null);
-  // eslint-disable-next-line
-  const [start, setStart] = useState([38.9072, -77.0369])
-  // eslint-disable-next-line
-  const [end, setEnd] = useState([37.7749, -122.4194])
     console.log(map);
   return (
     <>
       <MapContainer
         center={[37.0902, -95.7129]}
-        zoom={3}
-        zoomControl={false} 
+        zoom={13}
         style={{ height: "100vh", width: "100%", padding: 0 }}
         whenCreated={map => setMap(map)}
       >
-        {/* *************** */}
-        {/* Pass in our custom control layer here, inside of the map container */}
-        {/* *************** */}
-        <RoutingControl 
-          position={'topleft'} 
-          start={start} 
-          end={end} 
-          color={'#757de8'} 
-        />
-        <LayersControl position="topright">
-          <LayersControl.BaseLayer checked name="Map">
-            <TileLayer
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url={maps.base}
-            />
-          </LayersControl.BaseLayer>
-        </LayersControl>
+      <TileLayer
+      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
+        <Marker position={[38.9072,-77.0369]}>
+
+        </Marker>
       </MapContainer>
     </>
   );
